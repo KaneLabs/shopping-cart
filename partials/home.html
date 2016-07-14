@@ -57,6 +57,18 @@
           <li ng-hide='{{tea.inStock}}'>No</li>
         </ul>
       </td>
+      <td>
+
+        <select ng-model="quantity" ng-init='quantity="1"'>
+          <option value='1'>1</option>
+          <option ng-repeat='qty in [2,3,4,5,6,7,8,9]'>{{qty}}</option>
+          <option value='>9' >>9</option>
+        </select>
+
+        <button ng-hide='quantity == ">9"' ng-click='addTeaToCart()'>Add To Bag</button>
+        <p ng-show='quantity == ">9"'><a href='/contact'>Contact Us</a> for Bulk Orders</p>
+
+      </td>
 
     </tr>
 

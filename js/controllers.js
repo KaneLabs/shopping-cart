@@ -2,7 +2,7 @@ app.controller('HomeController', function($scope, $http){
 
   $scope.state = {
     teas: 'loading',
-    byHighest: true
+    cart: []
   }
 
   $http.get('teas.json')
@@ -14,10 +14,19 @@ app.controller('HomeController', function($scope, $http){
     console.log(e);
   })
 
-  $scope.priceSorter = function () {
-    console.log('anything');
-    $scope.state.byHighest = !$scope.state.byHighest;
-    console.log($scope.state.byHighest);
+  $scope.addTeaToCart = function () {
+
+    if(this.quantity > 9){
+      alert('must be less than 10 teas')
+    }
+
+    var tea = {
+      teaId: this.tea._id,
+      qty: this.quantity
+    }
+
+    $scope.state.cart.push(tea)
+    console.log($scope.state.cart);
   }
 
 });
