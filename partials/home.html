@@ -1,1 +1,32 @@
-<p>home :)</p>
+<table>
+  <thead>
+    <tr>
+      <td>Image</td>
+      <td>Data</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat='tea in state.teas'>
+      <td>
+        <img ng-src='{{tea.imageUrl}}' >
+      </td>
+
+      <td>
+        <ul>
+          <li>Price: {{tea.price * .01 | currency}}</li>
+          <li>Caffeine scale: {{tea.caffeineScale}}</li>
+          <li>Ingredients: {{tea.ingredients}}</li>
+          <li>Rating: {{tea.rating}}</li>
+          <li>
+            <ul ng-repeat='category in tea.categories'>
+              <li>{{category}}</li>
+            </ul>
+          </li>
+
+        </ul>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
