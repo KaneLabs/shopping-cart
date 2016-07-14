@@ -26,9 +26,9 @@
       <td>Image</td>
       <td>Data</td>
       <td>Order by Price:
-        <select ng-model='priceSort'>
-          <option value=''>No</option>
-          <option value='price'>Yes</option>
+        <select ng-model='priceSort' ng-init='priceSort = "price"'>
+          <option value='price'>Lowest</option>
+          <option value='-price'>Highest</option>
         </select>
       </td>
     </tr>
