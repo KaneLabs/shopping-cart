@@ -1,7 +1,8 @@
 app.controller('HomeController', function($scope, $http){
 
   $scope.state = {
-    teas: 'loading'
+    teas: 'loading',
+    byHighest: true
   }
 
   $http.get('teas.json')
@@ -12,6 +13,12 @@ app.controller('HomeController', function($scope, $http){
   .catch(function(e) {
     console.log(e);
   })
+
+  $scope.priceSorter = function () {
+    console.log('anything');
+    $scope.state.byHighest = !$scope.state.byHighest;
+    console.log($scope.state.byHighest);
+  }
 
 });
 

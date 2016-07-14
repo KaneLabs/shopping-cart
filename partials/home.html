@@ -1,27 +1,48 @@
-<select ng-model='searchCategory'>
+<label>Search by Category:
+<select ng-model='searchCategory' >
 
-  <option value='price' >Price</option>
-  <option value='rating' >Rating</option>
-  <option value='inStock' >In Stock?</option>
+  <option value="">All</option>
+  <option value='spring' >Spring</option>
+  <option value='summer'>Dark</option>
+  <option value='winter' >Winter</option>
+  <option value='cold' >Cold</option>
+  <option value='warm' >Warm</option>
+  <option value='hot' >Hot</option>
+  <option value='dry' >Dry</option>
+  <option value='dark' >Dark</option>
+  <option value='lucid' >Lucid</option>
+  <option value='awesome' >Awesome</option>
 
 </select>
+</label>
+
+<label>Search by Name:
+<input type="text" ng-model="searchName">
+</label>
 
 <table>
   <thead>
     <tr>
       <td>Image</td>
       <td>Data</td>
+      <td>Order by Price:
+        <select ng-model='priceSort'>
+          <option value=''>No</option>
+          <option value='price'>Yes</option>
+        </select>
+      </td>
     </tr>
   </thead>
   <tbody>
 
-    <tr ng-repeat='tea in state.teas | orderBy:searchCategory'>
+    <tr ng-repeat='tea in state.teas | filter:searchCategory | filter:searchName | orderBy:priceSort'>
 
       <td>
         <img ng-src='{{tea.imageUrl}}' >
       </td>
 
       <td>
+        <h3>{{tea.name}}</h3>
         <ul>
           <li>Price: {{tea.price * .01 | currency}}</li>
           <li>Caffeine scale: {{tea.caffeineScale}}</li>
