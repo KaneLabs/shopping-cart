@@ -23,10 +23,11 @@
               <li>{{category}}</li>
             </ul>
           </li>
-
+          <li ng-show='{{tea.inStock}}'>Yes</li>
+          <li ng-hide='{{tea.inStock}}'>No</li>
         </ul>
       </td>
     </tr>
-    
+
   </tbody>
 </table>
