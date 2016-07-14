@@ -1,4 +1,4 @@
-app.controller('HomeController', function($scope, $http){
+app.controller('HomeController', function($scope, $http, $location){
 
   $scope.state = {
     teas: 'loading',
@@ -16,9 +16,8 @@ app.controller('HomeController', function($scope, $http){
 
   $scope.addTeaToCart = function () {
 
-    if(this.quantity > 9){
-      alert('must be less than 10 teas')
-    }
+
+    this.quantity > 9 ? alert('must be less than 10 teas') : null
 
     var tea = {
       teaId: this.tea._id,
@@ -28,6 +27,14 @@ app.controller('HomeController', function($scope, $http){
     $scope.state.cart.push(tea)
     console.log($scope.state.cart);
   }
+
+  $scope.goToCheckout = function(){
+    $location.path('/checkout');
+  }
+
+});
+
+app.controller('CheckoutController', function($scope){
 
 });
 

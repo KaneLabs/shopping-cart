@@ -15,6 +15,10 @@ app.config(function ($routeProvider, $locationProvider) {
     templateUrl: '../partials/contact.html',
     controller: 'ContactController'
   })
+  .when('/checkout', {
+    templateUrl: '../partials/checkout.html',
+    controller: 'CheckoutController'
+  })
   .otherwise({
     redirectTo: '/'
   })
