@@ -1,1 +1,24 @@
 <p>Checkout</p>
+<table>
+  <thead>
+    <tr>
+      <td>Tea</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="tea in rootState.cart">
+      <td><img ng-src='{{tea.imageUrl}}'></td>
+      <td>
+        Name: {{tea.name}}
+        <br/>
+        Unit Price: {{tea.price | currency}}
+        <br/>
+        Qty: {{tea.qty}}
+        <br/>
+        Price: {{tea.price * tea.qty | currency}}
+        <br />
+        ID: {{tea.teaId}}
+      </td>
+    </tr>
+  </tbody>
+</table>

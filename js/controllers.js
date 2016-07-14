@@ -1,8 +1,11 @@
-app.controller('HomeController', function($scope, $http, $location){
+app.controller('HomeController', function($rootScope,$scope, $http, $location){
+
+  $rootScope.rootState = {
+    cart: []
+  }
 
   $scope.state = {
-    teas: 'loading',
-    cart: []
+    teas: 'loading'
   }
 
   $http.get('teas.json')
@@ -16,16 +19,17 @@ app.controller('HomeController', function($scope, $http, $location){
 
   $scope.addTeaToCart = function () {
 
-
     this.quantity > 9 ? alert('must be less than 10 teas') : null
 
     var tea = {
       teaId: this.tea._id,
-      qty: this.quantity
+      qty: this.quantity,
+      imageUrl: this.tea.imageUrl,
+      name: this.tea.name,
+      price: this.tea.price * .01
     }
 
-    $scope.state.cart.push(tea)
-    console.log($scope.state.cart);
+    $rootScope.rootState.cart.push(tea)
   }
 
   $scope.goToCheckout = function(){
@@ -34,8 +38,8 @@ app.controller('HomeController', function($scope, $http, $location){
 
 });
 
-app.controller('CheckoutController', function($scope){
-
+app.controller('CheckoutController', function($rootScope,$scope){
+  console.log($rootScope.rootState.cart);
 });
 
 app.controller('AboutController', function($scope){

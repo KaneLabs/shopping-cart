@@ -20,7 +20,7 @@
 <input type="text" ng-model="searchName">
 </label>
 
-<button id='checkout' ng-click='goToCheckout()'>Checkout | Bag:{{state.cart.length}}</button>
+<button id='checkout' ng-click='goToCheckout()'>Checkout | Bag:{{rootState.cart.length}}</button>
 
 <table>
   <thead>
@@ -59,6 +59,7 @@
           <li ng-hide='{{tea.inStock}}'>No</li>
         </ul>
       </td>
+      
       <td>
 
         <select ng-model="quantity" ng-init='quantity="1"'>
