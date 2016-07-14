@@ -1,3 +1,11 @@
+<select ng-model='searchCategory'>
+
+  <option value='price' >Price</option>
+  <option value='rating' >Rating</option>
+  <option value='inStock' >In Stock?</option>
+
+</select>
+
 <table>
   <thead>
     <tr>
@@ -7,7 +15,8 @@
   </thead>
   <tbody>
 
-    <tr ng-repeat='tea in state.teas'>
+    <tr ng-repeat='tea in state.teas | orderBy:searchCategory'>
+
       <td>
         <img ng-src='{{tea.imageUrl}}' >
       </td>
@@ -27,6 +36,7 @@
           <li ng-hide='{{tea.inStock}}'>No</li>
         </ul>
       </td>
+
     </tr>
 
   </tbody>
