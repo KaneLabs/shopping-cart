@@ -7,9 +7,10 @@
   </thead>
   <tbody>
     <tr ng-repeat="tea in state.cart">
-      <td><img ng-src='{{tea.imageUrl}}'></td>
-      <td>
 
+      <td><img ng-src='{{tea.imageUrl}}'></td>
+
+      <td>
         Name: {{tea.name}}
         <br/>
         Unit Price: {{tea.price | currency}}
@@ -26,6 +27,11 @@
         <br/>
         Rating: {{tea.rating}}
       </td>
+
+      <td>
+        <button ng-click='removeTea(tea.teaId)'>X</button>
+      </td>
+
     </tr>
   </tbody>
 
