@@ -6,9 +6,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="tea in rootState.cart">
+    <tr ng-repeat="tea in state.cart">
       <td><img ng-src='{{tea.imageUrl}}'></td>
       <td>
+
         Name: {{tea.name}}
         <br/>
         Unit Price: {{tea.price | currency}}
@@ -21,4 +22,7 @@
       </td>
     </tr>
   </tbody>
+
 </table>
+
+<p>Subtotal: {{state.subtotal | currency}}</p>

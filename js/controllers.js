@@ -1,16 +1,12 @@
-app.controller('HomeController', function($rootScope,$scope, $http, $location){
-
-  $rootScope.rootState = {
-    cart: []
-  }
+app.controller('HomeController', function($rootScope,$scope, $http, $location, cartFactory){
 
   $scope.state = {
-    teas: 'loading'
+    teas: 'loading',
+    cart: cartFactory.cart
   }
 
   $http.get('teas.json')
   .then(function (teas) {
-    console.log(teas.data);
     $scope.state.teas = teas.data;
   })
   .catch(function(e) {
@@ -29,7 +25,7 @@ app.controller('HomeController', function($rootScope,$scope, $http, $location){
       price: this.tea.price * .01
     }
 
-    $rootScope.rootState.cart.push(tea)
+    cartFactory.cart.push(tea)
   }
 
   $scope.goToCheckout = function(){
@@ -38,8 +34,17 @@ app.controller('HomeController', function($rootScope,$scope, $http, $location){
 
 });
 
-app.controller('CheckoutController', function($rootScope,$scope){
-  console.log($rootScope.rootState.cart);
+app.controller('CheckoutController', function($scope, cartFactory){
+
+  $scope.state = {
+    cart: cartFactory.cart,
+    subtotal: 0
+  }
+
+  $scope.state.cart.forEach(function (element, index, array) {
+    $scope.state.subtotal += (element.price * element.qty)
+  })
+
 });
 
 app.controller('AboutController', function($scope){
