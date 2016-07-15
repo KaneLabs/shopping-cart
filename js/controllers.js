@@ -85,6 +85,12 @@ app.controller('CheckoutController', function($scope, cartFactory){
     $scope.getSubtotal();
   }
 
+  $scope.updateQty = function () {
+    this.tea.qty = this.quantity;
+    $scope.state.subtotal = 0;
+    $scope.getSubtotal();
+  }
+
 })
 
 app.controller('AboutController', function($scope){
