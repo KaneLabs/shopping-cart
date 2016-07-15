@@ -8,6 +8,7 @@ app.controller('HomeController', function($rootScope,$scope, $http, $location, c
   $http.get('teas.json')
   .then(function (teas) {
     $scope.state.teas = teas.data;
+    console.log(teas.data);
   })
   .catch(function(e) {
     console.log(e);
@@ -22,7 +23,10 @@ app.controller('HomeController', function($rootScope,$scope, $http, $location, c
       qty: this.quantity,
       imageUrl: this.tea.imageUrl,
       name: this.tea.name,
-      price: this.tea.price * .01
+      price: this.tea.price * .01,
+      caffeineScale: this.tea.caffeineScale,
+      ingredients: this.tea.ingredients,
+      rating: this.tea.rating
     }
 
     cartFactory.cart.push(tea)
@@ -41,9 +45,14 @@ app.controller('CheckoutController', function($scope, cartFactory){
     subtotal: 0
   }
 
-  $scope.state.cart.forEach(function (element, index, array) {
-    $scope.state.subtotal += (element.price * element.qty)
-  })
+  function getSubtotal() {
+    $scope.state.cart.forEach(function (element, index, array) {
+      $scope.state.subtotal += (element.price * element.qty)
+    })
+  }
+
+  getSubtotal();
+
 
 });
 
